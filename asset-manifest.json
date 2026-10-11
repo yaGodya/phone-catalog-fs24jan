@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fs24jan/static/css/main.bc4daff7.css",
-    "main.js": "/phone-catalog-fs24jan/static/js/main.a35b35b4.js",
+    "main.css": "/phone-catalog-fs24jan/static/css/main.366802f2.css",
+    "main.js": "/phone-catalog-fs24jan/static/js/main.279270cd.js",
     "static/media/banner-tablets.png": "/phone-catalog-fs24jan/static/media/banner-tablets.3ab0c9b71cae9e04b094.png",
     "static/media/Dima.png": "/phone-catalog-fs24jan/static/media/Dima.995c31d4f2701add78ef.png",
     "static/media/banner-phones.png": "/phone-catalog-fs24jan/static/media/banner-phones.f509ad3c8ed651749cb5.png",
@@ -36,14 +36,13 @@
     "static/media/arrow_up.svg": "/phone-catalog-fs24jan/static/media/arrow_up.cac169fc8cabb407dc6b5159ac434678.svg",
     "static/media/arrows_left.svg": "/phone-catalog-fs24jan/static/media/arrows_left.7e6cff5d80174f345e03.svg",
     "static/media/minus.svg": "/phone-catalog-fs24jan/static/media/minus.812f73eb6e44170d11cb.svg",
-    "static/media/avatar.svg": "/phone-catalog-fs24jan/static/media/avatar.92234cee24af14d83be3570ed9fdf639.svg",
     "static/media/burger-menu.svg": "/phone-catalog-fs24jan/static/media/burger-menu.de99d8544828854814f848bcbb72fff3.svg",
     "static/media/ua.webp": "/phone-catalog-fs24jan/static/media/ua.13e7e677a20759758435.webp",
-    "main.bc4daff7.css.map": "/phone-catalog-fs24jan/static/css/main.bc4daff7.css.map",
-    "main.a35b35b4.js.map": "/phone-catalog-fs24jan/static/js/main.a35b35b4.js.map"
+    "main.366802f2.css.map": "/phone-catalog-fs24jan/static/css/main.366802f2.css.map",
+    "main.279270cd.js.map": "/phone-catalog-fs24jan/static/js/main.279270cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc4daff7.css",
-    "static/js/main.a35b35b4.js"
+    "static/css/main.366802f2.css",
+    "static/js/main.279270cd.js"
   ]
 }
