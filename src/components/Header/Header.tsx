@@ -12,7 +12,6 @@ import { ReactComponent as Logo } from 'img/icons/Logo.svg';
 import { ReactComponent as Menus } from 'img/icons/burger-menu.svg';
 import { ReactComponent as Cours } from 'img/icons/cours.svg';
 import { ReactComponent as Heart } from 'img/icons/hearts.svg';
-import { ReactComponent as Auth } from 'img/icons/avatar.svg';
 import { Theme } from 'components/Theme/Theme';
 
 
@@ -88,17 +87,6 @@ export const Header = () => {
 
         <div className={styles.theme}>
           <Theme />
-        </div>
-
-        <div>
-          <NavLink
-            to="/auth"
-            className={({ isActive }) =>
-              classNames(styles.autos, { [styles.is_active]: isActive })
-            }
-          >
-            <Auth className={styles.auto} />
-          </NavLink>
         </div>
 
         <NavLink

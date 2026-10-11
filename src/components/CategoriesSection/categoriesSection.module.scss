@@ -47,6 +47,17 @@
   &__link {
     text-decoration: none;
     width: 100%;
+
+    &:hover {
+      .category__photo__container {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 32px rgba(15, 15, 17, 0.18);
+      }
+
+      .category__photo {
+        transform: scale(1.08);
+      }
+    }
   }
 
   &__type {
@@ -65,7 +76,7 @@
     overflow: hidden;
     background-color: #d53c51;
 
-    transition: $effectDuration;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     @include on-tablet {
       height: 187px;
@@ -82,11 +93,8 @@
     right: 0;
     max-height: 80%;
     object-fit: contain;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
+    transform-origin: center bottom;
+    transition: transform 0.3s ease;
   }
 
   &__name {

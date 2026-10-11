@@ -20,17 +20,19 @@
   &__slider {
     max-width: 100%;
     display: flex;
+    align-items: center;
     gap: 16px;
 
     &-button {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
 
       cursor: pointer;
-      border-radius: 48px;
-      max-height: 100%;
+      border-radius: 50%;
       width: 32px;
+      height: 32px;
       border: 1px solid var(--icons-color);
       background-color: var(--slider-bg-color);
 

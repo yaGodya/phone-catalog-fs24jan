@@ -14,23 +14,12 @@ import { LottieAnimation } from 'components/UI/LottieAnimation';
 import * as animationData from 'animations/EmptyCart.json';
 import { motion } from 'framer-motion';
 import { titleVariants } from 'utils/titleVariants';
-import { useNavigate } from 'react-router-dom';
-
-
 export const CartPage = () => {
   const { cart, cartTotalAmount, cartTotalQuantity } = useSelector(
     (state: RootState) => state.product,
   );
   const dispatch = useDispatch();
   const [t] = useTranslation('global');
-  const [isAuth, setIsAuth] = useState<string | null>(localStorage.getItem('accessToken'));
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsAuth(localStorage.getItem('accessToken'));
-  }, []);
-
 
   useEffect(() => {
     dispatch({ type: 'product/getTotals' });
@@ -48,8 +37,6 @@ export const CartPage = () => {
     setModalIsOpen(false);
   };
 
-  const authResult = isAuth ? 'You are autorized' : 'You are not autorized';
-
   return (
     <div className={styles.container}>
       <ButtonBack textForBackButton={t('cart.Back')} />
@@ -61,9 +48,6 @@ export const CartPage = () => {
         animate="visible"
       >
         {t('cart.Cart')}
-        <span style={{ color: 'purple', fontSize: '24px', margin: '0 30px', alignSelf: 'center' }}>{authResult}</span>
-        {isAuth && <button onClick={() => localStorage.removeItem('accessToken')}>Log out</button>}
-        {!isAuth && <button onClick={() => navigate('../auth')}>Log in</button>}
       </motion.h1>
 
       {cartTotalQuantity === 0 ? (

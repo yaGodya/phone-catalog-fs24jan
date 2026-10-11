@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Select, { StylesConfig, CSSObjectWithLabel } from 'react-select';
 import { SortBy } from 'components/Filter';
 import { useSearchParams } from 'react-router-dom';
+import styles from './dropdown.module.scss';
 
 interface Option {
   value: number | string;
@@ -18,13 +19,19 @@ interface DropdownProps {
 interface CustomStylesProps {
   isFocused?: boolean;
   isSelected?: boolean;
-  menuIsOpen?: boolean;
 }
 
-const getBaseStyles = (theme: boolean): StylesConfig<Option, false> => ({
-  control: (base: CSSObjectWithLabel, { isFocused }: CustomStylesProps) => ({
+const getBaseStyles = (
+  theme: boolean,
+  menuIsOpen: boolean,
+): StylesConfig<Option, false> => ({
+  control: (base: CSSObjectWithLabel) => ({
     ...base,
-    border: `1px solid ${isFocused ? 'var(--select-border-focudes-color)' : 'var(--select-border-color)'}`,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: menuIsOpen
+      ? 'var(--select-border-focudes-color)'
+      : 'var(--select-border-color)',
     backgroundColor: 'var(--select-control-bg-color)',
     color: `${theme ? '#242736' : '#fff'}`,
     boxShadow: 'none',
@@ -34,11 +41,13 @@ const getBaseStyles = (theme: boolean): StylesConfig<Option, false> => ({
     fontWeight: '500',
     minHeight: '40px',
     cursor: 'pointer',
-    transition: 'all .3s ease',
+    transition: 'border-color .2s ease',
 
     '&:hover': {
       borderColor: 'var(--select-border-focudes-color)',
-      transition: 'all .3s ease',
+    },
+    '&:hover [class*="indicatorContainer"]': {
+      color: 'var(--select-border-focudes-color)',
     },
   }),
   singleValue: (base: CSSObjectWithLabel) => ({
@@ -70,10 +79,17 @@ const getBaseStyles = (theme: boolean): StylesConfig<Option, false> => ({
     padding: '0 12px',
     lineHeight: '1',
   }),
-  dropdownIndicator: (base: CSSObjectWithLabel, state: CustomStylesProps) => ({
+  dropdownIndicator: (base: CSSObjectWithLabel) => ({
     ...base,
-    transition: 'all .3s ease',
-    transform: state.menuIsOpen ? 'rotate(180deg)' : 'none',
+    color: menuIsOpen
+      ? 'var(--select-border-focudes-color)'
+      : 'var(--select-border-color)',
+    transition: 'transform .2s ease, color .2s ease',
+    transform: menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+    transformOrigin: 'center',
+    '&:hover': {
+      color: 'var(--select-border-focudes-color)',
+    },
   }),
   indicatorSeparator: (base: CSSObjectWithLabel) => ({
     ...base,
@@ -85,8 +101,11 @@ const getBaseStyles = (theme: boolean): StylesConfig<Option, false> => ({
   }),
 });
 
-const getCustomStyles = (theme: boolean): StylesConfig<Option, false> => {
-  const baseStyles = getBaseStyles(theme);
+const getCustomStyles = (
+  theme: boolean,
+  menuIsOpen: boolean,
+): StylesConfig<Option, false> => {
+  const baseStyles = getBaseStyles(theme, menuIsOpen);
   return {
     ...baseStyles,
     container: (base: CSSObjectWithLabel) => ({
@@ -96,8 +115,11 @@ const getCustomStyles = (theme: boolean): StylesConfig<Option, false> => {
   };
 };
 
-const getDefaultStyles = (theme: boolean): StylesConfig<Option, false> => {
-  const baseStyles = getBaseStyles(theme);
+const getDefaultStyles = (
+  theme: boolean,
+  menuIsOpen: boolean,
+): StylesConfig<Option, false> => {
+  const baseStyles = getBaseStyles(theme, menuIsOpen);
   return {
     ...baseStyles,
     container: (base: CSSObjectWithLabel) => ({
@@ -132,18 +154,24 @@ export const Dropdown: FC<DropdownProps> = ({
   };
 
   const isWideScreen = window.innerWidth >= 640;
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className={styles.root}>
       <Select
+        classNamePrefix="catalog-select"
         defaultValue={getSelectedValue(options) || options[0]}
         options={options}
+        menuIsOpen={menuIsOpen}
+        onMenuOpen={() => setMenuIsOpen(true)}
+        onMenuClose={() => setMenuIsOpen(false)}
         styles={
           isSortDropdown && isWideScreen
-            ? getCustomStyles(theme)
-            : getDefaultStyles(theme)
+            ? getCustomStyles(theme, menuIsOpen)
+            : getDefaultStyles(theme, menuIsOpen)
         }
         isSearchable={false}
+        blurInputOnSelect
         onChange={handleChange}
       />
     </div>

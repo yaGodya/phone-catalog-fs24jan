@@ -178,7 +178,11 @@
   height: 20px;
 
   fill: var(--main-icons-color);
-  transition: $effectDuration;
+  transition: transform 0.2s ease, fill $effectDuration;
+}
+
+.menus:hover .menus__logo {
+  transform: scale(1.1);
 }
 
 .favorites {
@@ -204,7 +208,11 @@
     width: 20px;
     height: 20px;
     fill: var(--main-icons-color);
-    transition: $effectDuration;
+    transition: transform 0.2s ease, fill $effectDuration;
+  }
+
+  &:hover &__logo {
+    transform: scale(1.1);
   }
 }
 
@@ -233,7 +241,11 @@
     width: 20px;
     height: 20px;
     fill: var(--main-icons-color);
-    transition: $effectDuration;
+    transition: transform 0.2s ease, fill $effectDuration;
+  }
+
+  &:hover &__logo {
+    transform: scale(1.1);
   }
 }
 

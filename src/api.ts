@@ -1,7 +1,6 @@
 import { ProductItemType } from './types/ProductItemType';
 import { Product } from './types/Product';
 
-// Login still expects a server. The public catalog reads local JSON.
 export const API_URL = 'https://test-api-server-hetv.onrender.com';
 
 function assetUrl(path: string) {

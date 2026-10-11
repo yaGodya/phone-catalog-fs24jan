@@ -25,7 +25,11 @@
   background-position: center;
 
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+}
+
+.flag:hover {
+  transform: scale(1.1);
 }
 
 .en {
@@ -52,4 +56,8 @@
 .active {
   z-index: 2;
   transform: scale(1.05) !important;
+}
+
+.active:hover {
+  transform: scale(1.1) !important;
 }

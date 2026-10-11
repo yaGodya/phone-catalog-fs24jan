@@ -19,11 +19,16 @@
   border-radius: 8px;
   overflow: hidden;
 
-  transition: $effectDuration;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(15, 15, 17, 0.08);
     background-color: var(--card--bg-hover-color);
+  }
+
+  &:hover &__image_img {
+    transform: scale(1.06);
   }
 
   &__image {
@@ -37,6 +42,7 @@
     &_img {
       max-width: 100%;
       max-height: 170px;
+      transition: transform 0.3s ease;
     }
   }
 }
