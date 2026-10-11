@@ -1,5 +1,5 @@
-import { API_URL } from "api";
-
 export const getImageUrl = (imagePath: string): string => {
-  return `${API_URL}/${imagePath}`;
+  const base = (process.env.PUBLIC_URL || '').replace(/\/$/, '');
+
+  return `${base}/${imagePath}`;
 };

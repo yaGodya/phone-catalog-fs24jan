@@ -28,7 +28,6 @@ const loadState = (key: string) => {
     const serializedState = localStorage.getItem(key);
 
     if (serializedState === null) {
-      toast.error('Unable to upload products');
       return;
     }
 
